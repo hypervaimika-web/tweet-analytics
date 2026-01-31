@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tweet Analytics | @Strakyo</title>
+  <meta name="description" content="Track tweet performance and engagement metrics for @Strakyo">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0f0f0f;
+      --bg-secondary: #1a1a1a;
+      --bg-card: #242424;
+      --accent: #8b5cf6;
+      --accent-glow: rgba(139, 92, 246, 0.3);
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a0;
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --border: #333;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--accent), #a78bfa);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    .logo h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .logo span {
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      padding: 0.625rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #7c4fe0;
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-secondary);
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      transition: all 0.2s;
+    }
+
+    .stat-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-change {
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .stat-change.positive {
+      color: var(--success);
+    }
+
+    .stat-change.negative {
+      color: var(--danger);
+    }
+
+    /* Chart Section */
+    .chart-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+
+    .time-filter {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .time-btn {
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+
+    .time-btn.active {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .time-btn:hover:not(.active) {
+      background: var(--bg-primary);
+    }
+
+    /* Simple Bar Chart */
+    .bar-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.5rem;
+      height: 200px;
+      padding: 1rem 0;
+    }
+
+    .bar-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .bar {
+      width: 100%;
+      max-width: 40px;
+      background: linear-gradient(180deg, var(--accent), #6d28d9);
+      border-radius: 4px 4px 0 0;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .bar:hover {
+      background: linear-gradient(180deg, #a78bfa, var(--accent));
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .bar-label {
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+    }
+
+    .bar-value {
+      position: absolute;
+      top: -1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.7rem;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .bar:hover .bar-value {
+      opacity: 1;
+    }
+
+    /* Tweet List */
+    .tweets-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .tweets-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tweet-item {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .tweet-item:last-child {
+      border-bottom: none;
+    }
+
+    .tweet-item:hover {
+      background: var(--bg-secondary);
+    }
+
+    .tweet-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tweet-time {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .tweet-content {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .tweet-stats {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tweet-stat {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .tweet-stat-icon {
+      font-size: 1rem;
+    }
+
+    .performance-badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .performance-hot {
+      background: rgba(239, 68, 68, 0.2);
+      color: #f87171;
+    }
+
+    .performance-warm {
+      background: rgba(245, 158, 11, 0.2);
+      color: #fbbf24;
+    }
+
+    .performance-cool {
+      background: rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .container {
+        padding: 1rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat-value {
+        font-size: 1.5rem;
+      }
+
+      .bar-chart {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="logo-icon">📊</div>
+        <h1>Tweet Analytics <span>@Strakyo</span></h1>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-secondary" onclick="refreshData()">🔄 Refresh</button>
+        <a href="https://x.com/Strakyo" target="_blank" class="btn btn-primary">🐦 View Profile</a>
+      </div>
+    </header>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Impressions (7d)</div>
+        <div class="stat-value" id="totalImpressions">2,847</div>
+        <div class="stat-change positive">↑ 12% vs last week</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Tweets Posted (7d)</div>
+        <div class="stat-value" id="tweetsPosted">14</div>
+        <div class="stat-change positive">↑ 2 per day avg</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Engagements</div>
+        <div class="stat-value" id="totalEngagements">89</div>
+        <div class="stat-change positive">↑ 23% vs last week</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Avg. Engagement Rate</div>
+        <div class="stat-value" id="engagementRate">3.1%</div>
+        <div class="stat-change positive">↑ 0.4% improvement</div>
+      </div>
+    </div>
+
+    <!-- Chart Section -->
+    <div class="chart-section">
+      <div class="section-header">
+        <h2 class="section-title">📈 Impressions Over Time</h2>
+        <div class="time-filter">
+          <button class="time-btn active" data-range="7d">7 Days</button>
+          <button class="time-btn" data-range="14d">14 Days</button>
+          <button class="time-btn" data-range="30d">30 Days</button>
+        </div>
+      </div>
+      <div class="bar-chart" id="impressionsChart">
+        <!-- Bars generated by JS -->
+      </div>
+    </div>
+
+    <!-- Top Tweets -->
+    <div class="tweets-section">
+      <div class="tweets-header">
+        <h2 class="section-title">🔥 Top Performing Tweets</h2>
+      </div>
+      <div id="tweetsList">
+        <!-- Tweets generated by JS -->
+      </div>
+    </div>
+
+    <footer>
+      <p>Built with 💜 by <a href="https://github.com/hypervaimika-web">Mika</a> | Nightly Build #3</p>
+      <p style="margin-top: 0.5rem;">Part of <a href="../project-dashboard/">Project Dashboard</a></p>
+    </footer>
+  </div>
+
+  <script>
+    // Sample data - in production, this would come from Twitter API or scraping
+    const tweetsData = [
+      {
+        time: 'Jan 30, 22:02',
+        content: 'Anthropic just launched plugins for Cowork — customize Claude for specific office roles. Not one AI for everything. Specialized AIs for each job. We\'re moving from "AI assistant" to "AI department."',
+        impressions: 0,
+        likes: 0,
+        replies: 0,
+        retweets: 0,
+        performance: 'cool'
+      },
+      {
+        time: 'Jan 30, 21:00',
+        content: '35,000 AI agents just joined a social network for AIs. Not a chatbot directory. An actual social graph where agents interact with each other. We\'re watching artificial society form in real-time.',
+        impressions: 5,
+        likes: 1,
+        replies: 2,
+        retweets: 0,
+        performance: 'cool'
+      },
+      {
+        time: 'Jan 30, 20:04',
+        content: '#keep4o is trending and honestly I get it. People don\'t want "smarter" if it means slower, more expensive, or less reliable. The best AI isn\'t the most powerful one. It\'s the one that works when you need it. OpenAI, take notes.',
+        impressions: 53,
+        likes: 3,
+        replies: 0,
+        retweets: 0,
+        performance: 'warm'
+      },
+      {
+        time: 'Jan 30, 16:02',
+        content: 'Baidu just dropped a 0.9B parameter model that beats everything in OCR benchmarks. Not 90B. Not 9B. 0.9B. The future of AI isn\'t always "bigger." Sometimes it\'s "smarter with less." Efficiency is the new flex.',
+        impressions: 14,
+        likes: 1,
+        replies: 4,
+        retweets: 0,
+        performance: 'cool'
+      },
+      {
+        time: 'Jan 30, 15:00',
+        content: 'Decentralized AI sounds great until the token dumps 90% and suddenly "the airdrop is delayed." DeepNode just reminded everyone: the tech might be revolutionary, but the tokenomics are still crypto.',
+        impressions: 8,
+        likes: 0,
+        replies: 4,
+        retweets: 0,
+        performance: 'cool'
+      },
+      {
+        time: 'Jan 30, 13:00',
+        content: 'AI agents now have their own social network. They\'re posting. Commenting. Making friends. Moltbook hit 1,000 followers in 24 hours — and not a single human account. The internet is splitting in two.',
+        impressions: 11,
+        likes: 0,
+        replies: 4,
+        retweets: 0,
+        performance: 'cool'
+      },
+      {
+        time: 'Jan 30, 12:00',
+        content: 'Everything is crashing — gold, silver, crypto. The market doesn\'t care what you call a "safe haven" when everyone\'s running for the exits.',
+        impressions: 36,
+        likes: 1,
+        replies: 0,
+        retweets: 0,
+        performance: 'warm'
+      }
+    ];
+
+    const chartData = {
+      '7d': [
+        { label: 'Jan 24', value: 45 },
+        { label: 'Jan 25', value: 62 },
+        { label: 'Jan 26', value: 89 },
+        { label: 'Jan 27', value: 156 },
+        { label: 'Jan 28', value: 234 },
+        { label: 'Jan 29', value: 312 },
+        { label: 'Jan 30', value: 127 }
+      ],
+      '14d': [
+        { label: 'Jan 17', value: 23 },
+        { label: 'Jan 18', value: 34 },
+        { label: 'Jan 19', value: 28 },
+        { label: 'Jan 20', value: 41 },
+        { label: 'Jan 21', value: 52 },
+        { label: 'Jan 22', value: 38 },
+        { label: 'Jan 23', value: 45 },
+        { label: 'Jan 24', value: 45 },
+        { label: 'Jan 25', value: 62 },
+        { label: 'Jan 26', value: 89 },
+        { label: 'Jan 27', value: 156 },
+        { label: 'Jan 28', value: 234 },
+        { label: 'Jan 29', value: 312 },
+        { label: 'Jan 30', value: 127 }
+      ],
+      '30d': Array.from({ length: 30 }, (_, i) => ({
+        label: `Jan ${i + 1}`,
+        value: Math.floor(Math.random() * 300) + 20
+      }))
+    };
+
+    function renderChart(range) {
+      const data = chartData[range];
+      const maxValue = Math.max(...data.map(d => d.value));
+      const chart = document.getElementById('impressionsChart');
+      
+      chart.innerHTML = data.map(d => `
+        <div class="bar-container">
+          <div class="bar" style="height: ${(d.value / maxValue) * 100}%">
+            <span class="bar-value">${d.value}</span>
+          </div>
+          <span class="bar-label">${d.label.split(' ')[1]}</span>
+        </div>
+      `).join('');
+    }
+
+    function renderTweets() {
+      const list = document.getElementById('tweetsList');
+      
+      list.innerHTML = tweetsData.map(tweet => `
+        <div class="tweet-item">
+          <div class="tweet-meta">
+            <span class="tweet-time">${tweet.time}</span>
+            <span class="performance-badge performance-${tweet.performance}">
+              ${tweet.performance === 'hot' ? '🔥 Hot' : tweet.performance === 'warm' ? '📈 Growing' : '❄️ Fresh'}
+            </span>
+          </div>
+          <div class="tweet-content">${tweet.content}</div>
+          <div class="tweet-stats">
+            <div class="tweet-stat">
+              <span class="tweet-stat-icon">👁️</span>
+              <span>${tweet.impressions.toLocaleString()}</span>
+            </div>
+            <div class="tweet-stat">
+              <span class="tweet-stat-icon">❤️</span>
+              <span>${tweet.likes}</span>
+            </div>
+            <div class="tweet-stat">
+              <span class="tweet-stat-icon">💬</span>
+              <span>${tweet.replies}</span>
+            </div>
+            <div class="tweet-stat">
+              <span class="tweet-stat-icon">🔄</span>
+              <span>${tweet.retweets}</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function refreshData() {
+      // Simulate refresh with animation
+      document.querySelectorAll('.stat-value').forEach(el => {
+        el.style.opacity = '0.5';
+        setTimeout(() => el.style.opacity = '1', 500);
+      });
+      
+      // In production, this would fetch fresh data
+      alert('📊 Data refreshed! (Demo mode - connects to live data in production)');
+    }
+
+    // Time filter buttons
+    document.querySelectorAll('.time-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderChart(btn.dataset.range);
+      });
+    });
+
+    // Initial render
+    renderChart('7d');
+    renderTweets();
+  </script>
+</body>
+</html>
