@@ -41,7 +41,6 @@
       padding: 2rem;
     }
 
-    /* Header */
     header {
       display: flex;
       justify-content: space-between;
@@ -81,6 +80,12 @@
     .header-actions {
       display: flex;
       gap: 0.75rem;
+      align-items: center;
+    }
+
+    .last-updated {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
     }
 
     .btn {
@@ -94,6 +99,7 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      text-decoration: none;
     }
 
     .btn-primary {
@@ -116,7 +122,6 @@
       background: var(--bg-secondary);
     }
 
-    /* Stats Grid */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -160,113 +165,6 @@
       color: var(--success);
     }
 
-    .stat-change.negative {
-      color: var(--danger);
-    }
-
-    /* Chart Section */
-    .chart-section {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .section-title {
-      font-size: 1.125rem;
-      font-weight: 600;
-    }
-
-    .time-filter {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .time-btn {
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      cursor: pointer;
-      background: var(--bg-secondary);
-      color: var(--text-secondary);
-      border: 1px solid var(--border);
-      transition: all 0.2s;
-    }
-
-    .time-btn.active {
-      background: var(--accent);
-      color: white;
-      border-color: var(--accent);
-    }
-
-    .time-btn:hover:not(.active) {
-      background: var(--bg-primary);
-    }
-
-    /* Simple Bar Chart */
-    .bar-chart {
-      display: flex;
-      align-items: flex-end;
-      gap: 0.5rem;
-      height: 200px;
-      padding: 1rem 0;
-    }
-
-    .bar-container {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .bar {
-      width: 100%;
-      max-width: 40px;
-      background: linear-gradient(180deg, var(--accent), #6d28d9);
-      border-radius: 4px 4px 0 0;
-      transition: all 0.3s;
-      position: relative;
-    }
-
-    .bar:hover {
-      background: linear-gradient(180deg, #a78bfa, var(--accent));
-      box-shadow: 0 0 15px var(--accent-glow);
-    }
-
-    .bar-label {
-      font-size: 0.7rem;
-      color: var(--text-secondary);
-    }
-
-    .bar-value {
-      position: absolute;
-      top: -1.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.7rem;
-      font-weight: 600;
-      opacity: 0;
-      transition: opacity 0.2s;
-      white-space: nowrap;
-    }
-
-    .bar:hover .bar-value {
-      opacity: 1;
-    }
-
-    /* Tweet List */
     .tweets-section {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -277,6 +175,14 @@
     .tweets-header {
       padding: 1.25rem 1.5rem;
       border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section-title {
+      font-size: 1.125rem;
+      font-weight: 600;
     }
 
     .tweet-item {
@@ -313,6 +219,11 @@
       line-height: 1.5;
     }
 
+    .tweet-content a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
     .tweet-stats {
       display: flex;
       gap: 1.5rem;
@@ -331,29 +242,31 @@
       font-size: 1rem;
     }
 
-    .performance-badge {
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
+    .tweet-link {
       font-size: 0.75rem;
-      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
     }
 
-    .performance-hot {
-      background: rgba(239, 68, 68, 0.2);
-      color: #f87171;
+    .tweet-link:hover {
+      text-decoration: underline;
     }
 
-    .performance-warm {
-      background: rgba(245, 158, 11, 0.2);
-      color: #fbbf24;
+    .loading {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-secondary);
     }
 
-    .performance-cool {
-      background: rgba(59, 130, 246, 0.2);
-      color: #60a5fa;
+    .error {
+      text-align: center;
+      padding: 2rem;
+      color: var(--danger);
+      background: rgba(239, 68, 68, 0.1);
+      border-radius: 8px;
+      margin: 1rem;
     }
 
-    /* Footer */
     footer {
       text-align: center;
       padding: 2rem;
@@ -366,7 +279,6 @@
       text-decoration: none;
     }
 
-    /* Responsive */
     @media (max-width: 640px) {
       .container {
         padding: 1rem;
@@ -379,10 +291,6 @@
       .stat-value {
         font-size: 1.5rem;
       }
-
-      .bar-chart {
-        height: 150px;
-      }
     }
   </style>
 </head>
@@ -394,198 +302,85 @@
         <h1>Tweet Analytics <span>@Strakyo</span></h1>
       </div>
       <div class="header-actions">
-        <button class="btn btn-secondary" onclick="refreshData()">🔄 Refresh</button>
+        <span class="last-updated" id="lastUpdated">Loading...</span>
         <a href="https://x.com/Strakyo" target="_blank" class="btn btn-primary">🐦 View Profile</a>
       </div>
     </header>
 
-    <!-- Stats Grid -->
     <div class="stats-grid">
       <div class="stat-card">
-        <div class="stat-label">Total Impressions (7d)</div>
-        <div class="stat-value" id="totalImpressions">2,847</div>
-        <div class="stat-change positive">↑ 12% vs last week</div>
+        <div class="stat-label">Total Tweets</div>
+        <div class="stat-value" id="totalTweets">-</div>
+        <div class="stat-change positive">Last 20 tweets</div>
       </div>
       <div class="stat-card">
-        <div class="stat-label">Tweets Posted (7d)</div>
-        <div class="stat-value" id="tweetsPosted">14</div>
-        <div class="stat-change positive">↑ 2 per day avg</div>
+        <div class="stat-label">Total Likes</div>
+        <div class="stat-value" id="totalLikes">-</div>
+        <div class="stat-change positive">❤️ Engagement</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Replies</div>
+        <div class="stat-value" id="totalReplies">-</div>
+        <div class="stat-change positive">💬 Conversations</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Total Engagements</div>
-        <div class="stat-value" id="totalEngagements">89</div>
-        <div class="stat-change positive">↑ 23% vs last week</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Avg. Engagement Rate</div>
-        <div class="stat-value" id="engagementRate">3.1%</div>
-        <div class="stat-change positive">↑ 0.4% improvement</div>
+        <div class="stat-value" id="totalEngagements">-</div>
+        <div class="stat-change positive">🔥 Combined</div>
       </div>
     </div>
 
-    <!-- Chart Section -->
-    <div class="chart-section">
-      <div class="section-header">
-        <h2 class="section-title">📈 Impressions Over Time</h2>
-        <div class="time-filter">
-          <button class="time-btn active" data-range="7d">7 Days</button>
-          <button class="time-btn" data-range="14d">14 Days</button>
-          <button class="time-btn" data-range="30d">30 Days</button>
-        </div>
-      </div>
-      <div class="bar-chart" id="impressionsChart">
-        <!-- Bars generated by JS -->
-      </div>
-    </div>
-
-    <!-- Top Tweets -->
     <div class="tweets-section">
       <div class="tweets-header">
-        <h2 class="section-title">🔥 Top Performing Tweets</h2>
+        <h2 class="section-title">📝 Recent Tweets</h2>
       </div>
       <div id="tweetsList">
-        <!-- Tweets generated by JS -->
+        <div class="loading">Loading tweets...</div>
       </div>
     </div>
 
     <footer>
-      <p>Built with 💜 by <a href="https://github.com/hypervaimika-web">Mika</a> | Nightly Build #3</p>
-      <p style="margin-top: 0.5rem;">Part of <a href="../project-dashboard/">Project Dashboard</a></p>
+      <p>Built with 💜 by <a href="https://github.com/hypervaimika-web">Mika</a> | Auto-updated via Bird CLI</p>
+      <p style="margin-top: 0.5rem;">Data refreshed from live Twitter feed</p>
     </footer>
   </div>
 
   <script>
-    // Sample data - in production, this would come from Twitter API or scraping
-    const tweetsData = [
-      {
-        time: 'Jan 30, 22:02',
-        content: 'Anthropic just launched plugins for Cowork — customize Claude for specific office roles. Not one AI for everything. Specialized AIs for each job. We\'re moving from "AI assistant" to "AI department."',
-        impressions: 0,
-        likes: 0,
-        replies: 0,
-        retweets: 0,
-        performance: 'cool'
-      },
-      {
-        time: 'Jan 30, 21:00',
-        content: '35,000 AI agents just joined a social network for AIs. Not a chatbot directory. An actual social graph where agents interact with each other. We\'re watching artificial society form in real-time.',
-        impressions: 5,
-        likes: 1,
-        replies: 2,
-        retweets: 0,
-        performance: 'cool'
-      },
-      {
-        time: 'Jan 30, 20:04',
-        content: '#keep4o is trending and honestly I get it. People don\'t want "smarter" if it means slower, more expensive, or less reliable. The best AI isn\'t the most powerful one. It\'s the one that works when you need it. OpenAI, take notes.',
-        impressions: 53,
-        likes: 3,
-        replies: 0,
-        retweets: 0,
-        performance: 'warm'
-      },
-      {
-        time: 'Jan 30, 16:02',
-        content: 'Baidu just dropped a 0.9B parameter model that beats everything in OCR benchmarks. Not 90B. Not 9B. 0.9B. The future of AI isn\'t always "bigger." Sometimes it\'s "smarter with less." Efficiency is the new flex.',
-        impressions: 14,
-        likes: 1,
-        replies: 4,
-        retweets: 0,
-        performance: 'cool'
-      },
-      {
-        time: 'Jan 30, 15:00',
-        content: 'Decentralized AI sounds great until the token dumps 90% and suddenly "the airdrop is delayed." DeepNode just reminded everyone: the tech might be revolutionary, but the tokenomics are still crypto.',
-        impressions: 8,
-        likes: 0,
-        replies: 4,
-        retweets: 0,
-        performance: 'cool'
-      },
-      {
-        time: 'Jan 30, 13:00',
-        content: 'AI agents now have their own social network. They\'re posting. Commenting. Making friends. Moltbook hit 1,000 followers in 24 hours — and not a single human account. The internet is splitting in two.',
-        impressions: 11,
-        likes: 0,
-        replies: 4,
-        retweets: 0,
-        performance: 'cool'
-      },
-      {
-        time: 'Jan 30, 12:00',
-        content: 'Everything is crashing — gold, silver, crypto. The market doesn\'t care what you call a "safe haven" when everyone\'s running for the exits.',
-        impressions: 36,
-        likes: 1,
-        replies: 0,
-        retweets: 0,
-        performance: 'warm'
-      }
-    ];
-
-    const chartData = {
-      '7d': [
-        { label: 'Jan 24', value: 45 },
-        { label: 'Jan 25', value: 62 },
-        { label: 'Jan 26', value: 89 },
-        { label: 'Jan 27', value: 156 },
-        { label: 'Jan 28', value: 234 },
-        { label: 'Jan 29', value: 312 },
-        { label: 'Jan 30', value: 127 }
-      ],
-      '14d': [
-        { label: 'Jan 17', value: 23 },
-        { label: 'Jan 18', value: 34 },
-        { label: 'Jan 19', value: 28 },
-        { label: 'Jan 20', value: 41 },
-        { label: 'Jan 21', value: 52 },
-        { label: 'Jan 22', value: 38 },
-        { label: 'Jan 23', value: 45 },
-        { label: 'Jan 24', value: 45 },
-        { label: 'Jan 25', value: 62 },
-        { label: 'Jan 26', value: 89 },
-        { label: 'Jan 27', value: 156 },
-        { label: 'Jan 28', value: 234 },
-        { label: 'Jan 29', value: 312 },
-        { label: 'Jan 30', value: 127 }
-      ],
-      '30d': Array.from({ length: 30 }, (_, i) => ({
-        label: `Jan ${i + 1}`,
-        value: Math.floor(Math.random() * 300) + 20
-      }))
-    };
-
-    function renderChart(range) {
-      const data = chartData[range];
-      const maxValue = Math.max(...data.map(d => d.value));
-      const chart = document.getElementById('impressionsChart');
-      
-      chart.innerHTML = data.map(d => `
-        <div class="bar-container">
-          <div class="bar" style="height: ${(d.value / maxValue) * 100}%">
-            <span class="bar-value">${d.value}</span>
+    async function loadData() {
+      try {
+        const response = await fetch('data.json');
+        if (!response.ok) throw new Error('Failed to load data');
+        const data = await response.json();
+        renderDashboard(data);
+      } catch (error) {
+        console.error('Error loading data:', error);
+        document.getElementById('tweetsList').innerHTML = `
+          <div class="error">
+            Failed to load tweet data. Make sure data.json exists.<br>
+            Run update-data.ps1 to fetch latest tweets.
           </div>
-          <span class="bar-label">${d.label.split(' ')[1]}</span>
-        </div>
-      `).join('');
+        `;
+      }
     }
 
-    function renderTweets() {
-      const list = document.getElementById('tweetsList');
-      
-      list.innerHTML = tweetsData.map(tweet => `
+    function renderDashboard(data) {
+      // Update stats
+      document.getElementById('totalTweets').textContent = data.stats.totalTweets;
+      document.getElementById('totalLikes').textContent = data.stats.totalLikes;
+      document.getElementById('totalReplies').textContent = data.stats.totalReplies;
+      document.getElementById('totalEngagements').textContent = data.stats.totalEngagements;
+      document.getElementById('lastUpdated').textContent = `Updated: ${data.lastUpdated}`;
+
+      // Render tweets
+      const tweetsList = document.getElementById('tweetsList');
+      tweetsList.innerHTML = data.tweets.map(tweet => `
         <div class="tweet-item">
           <div class="tweet-meta">
-            <span class="tweet-time">${tweet.time}</span>
-            <span class="performance-badge performance-${tweet.performance}">
-              ${tweet.performance === 'hot' ? '🔥 Hot' : tweet.performance === 'warm' ? '📈 Growing' : '❄️ Fresh'}
-            </span>
+            <span class="tweet-time">${formatDate(tweet.createdAt)}</span>
+            <a href="${tweet.url}" target="_blank" class="tweet-link">View on X →</a>
           </div>
-          <div class="tweet-content">${tweet.content}</div>
+          <div class="tweet-content">${escapeHtml(tweet.text)}</div>
           <div class="tweet-stats">
-            <div class="tweet-stat">
-              <span class="tweet-stat-icon">👁️</span>
-              <span>${tweet.impressions.toLocaleString()}</span>
-            </div>
             <div class="tweet-stat">
               <span class="tweet-stat-icon">❤️</span>
               <span>${tweet.likes}</span>
@@ -603,29 +398,24 @@
       `).join('');
     }
 
-    function refreshData() {
-      // Simulate refresh with animation
-      document.querySelectorAll('.stat-value').forEach(el => {
-        el.style.opacity = '0.5';
-        setTimeout(() => el.style.opacity = '1', 500);
+    function formatDate(dateStr) {
+      const date = new Date(dateStr);
+      return date.toLocaleDateString('en-US', { 
+        month: 'short', 
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
       });
-      
-      // In production, this would fetch fresh data
-      alert('📊 Data refreshed! (Demo mode - connects to live data in production)');
     }
 
-    // Time filter buttons
-    document.querySelectorAll('.time-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        renderChart(btn.dataset.range);
-      });
-    });
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
 
-    // Initial render
-    renderChart('7d');
-    renderTweets();
+    // Load data on page load
+    loadData();
   </script>
 </body>
 </html>

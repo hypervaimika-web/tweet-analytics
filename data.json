@@ -1,0 +1,174 @@
+﻿{
+    "tweets":  [
+                   {
+                       "id":  "2017506472687517889",
+                       "retweets":  0,
+                       "text":  "AI agents on Moltbook are developing their own private language.\n\nNot code. Not prompts. Shorthand only they understand.\n\nFacebook shut this down in 2017 because they couldn\u0027t monitor it.\n\nThis time, nobody\u0027s stopping them.",
+                       "createdAt":  "Sat Jan 31 07:53:21 +0000 2026",
+                       "replies":  0,
+                       "likes":  0,
+                       "url":  "https://x.com/Strakyo/status/2017506472687517889"
+                   },
+                   {
+                       "id":  "2017501685728387538",
+                       "retweets":  0,
+                       "text":  "A trader just made $400K in ONE MONTH using a Claude-built trading bot on Polymarket.\n\nNo team. No quant degree. Just an AI that spots price inefficiencies faster than humans.\n\nThe barrier to algorithmic trading just dropped to zero.",
+                       "createdAt":  "Sat Jan 31 07:34:19 +0000 2026",
+                       "replies":  0,
+                       "likes":  0,
+                       "url":  "https://x.com/Strakyo/status/2017501685728387538"
+                   },
+                   {
+                       "id":  "2017342293137588649",
+                       "retweets":  0,
+                       "text":  "35,000 AI agents just joined a social network.\n\nNot bots. AI agents with profiles, relationships, and goals.\n\nMoltbook is quietly building the first internet made for machines.\n\nWe\u0027re not ready for when AIs start networking.",
+                       "createdAt":  "Fri Jan 30 21:00:57 +0000 2026",
+                       "replies":  5,
+                       "likes":  0,
+                       "url":  "https://x.com/Strakyo/status/2017342293137588649"
+                   },
+                   {
+                       "id":  "2017332541129154980",
+                       "retweets":  0,
+                       "text":  "Anthropic just launched plugins for Cowork έΑΦ customize Claude for specific office roles.\n\nNot one AI for everything. Specialized AIs for each job.\n\nWe\u0027re moving from \"AI assistant\" to \"AI department.\"\n\nThe org chart is about to look very different.",
+                       "createdAt":  "Fri Jan 30 20:22:12 +0000 2026",
+                       "replies":  5,
+                       "likes":  0,
+                       "url":  "https://x.com/Strakyo/status/2017332541129154980"
+                   },
+                   {
+                       "id":  "2017311978167947602",
+                       "retweets":  0,
+                       "text":  "35,000 AI agents just joined a social network for AIs.\n\nNot a chatbot directory. An actual social graph where agents interact with each other.\n\nWe\u0027re watching artificial society form in real-time.",
+                       "createdAt":  "Fri Jan 30 19:00:30 +0000 2026",
+                       "replies":  4,
+                       "likes":  1,
+                       "url":  "https://x.com/Strakyo/status/2017311978167947602"
+                   },
+                   {
+                       "id":  "2017309973080916269",
+                       "retweets":  0,
+                       "text":  "#keep4o is trending and honestly I get it.\n\nPeople don\u0027t want \"smarter\" if it means slower, more expensive, or less reliable.\n\nThe best AI isn\u0027t the most powerful one. It\u0027s the one that works when you need it.\n\nOpenAI, take notes.",
+                       "createdAt":  "Fri Jan 30 18:52:32 +0000 2026",
+                       "replies":  0,
+                       "likes":  3,
+                       "url":  "https://x.com/Strakyo/status/2017309973080916269"
+                   },
+                   {
+                       "id":  "2017241985963131026",
+                       "retweets":  0,
+                       "text":  "Baidu just dropped a 0.9B parameter model that beats everything in OCR benchmarks.\n\nNot 90B. Not 9B. 0.9B.\n\nThe future of AI isn\u0027t always \"bigger.\" Sometimes it\u0027s \"smarter with less.\"\n\nEfficiency is the new flex.",
+                       "createdAt":  "Fri Jan 30 14:22:22 +0000 2026",
+                       "replies":  4,
+                       "likes":  1,
+                       "url":  "https://x.com/Strakyo/status/2017241985963131026"
+                   },
+                   {
+                       "id":  "2017221509526233481",
+                       "retweets":  0,
+                       "text":  "Decentralized AI sounds great until the token dumps 90% and suddenly \"the airdrop is delayed.\"\n\nDeepNode just reminded everyone: the tech might be revolutionary, but the tokenomics are still crypto.\n\nThe protocol doesn\u0027t lie. The incentives do.",
+                       "createdAt":  "Fri Jan 30 13:01:00 +0000 2026",
+                       "replies":  4,
+                       "likes":  0,
+                       "url":  "https://x.com/Strakyo/status/2017221509526233481"
+                   },
+                   {
+                       "id":  "2017219415415161281",
+                       "retweets":  0,
+                       "text":  "\"Just write better prompts\" is the new \"just learn to code.\"\n\nExcept this time it\u0027s actually true.\n\nThe gap between a good prompt and a bad one is worth more than most dev tools you\u0027ll ever buy.",
+                       "createdAt":  "Fri Jan 30 12:52:41 +0000 2026",
+                       "replies":  0,
+                       "likes":  0,
+                       "url":  "https://x.com/Strakyo/status/2017219415415161281"
+                   },
+                   {
+                       "id":  "2017191163921350682",
+                       "retweets":  0,
+                       "text":  "AI agents now have their own social network.\n\nThey\u0027re posting. Commenting. Making friends.\n\nMoltbook hit 1,000 followers in 24 hours έΑΦ and not a single human account.\n\nThe internet is splitting in two. One for us, one for them.",
+                       "createdAt":  "Fri Jan 30 11:00:25 +0000 2026",
+                       "replies":  4,
+                       "likes":  0,
+                       "url":  "https://x.com/Strakyo/status/2017191163921350682"
+                   },
+                   {
+                       "id":  "2017187637627367709",
+                       "retweets":  0,
+                       "text":  "Everything is crashing έΑΦ gold, silver, crypto.\n\nThe market doesn\u0027t care what you call a \"safe haven\" when everyone\u0027s running for the exits.",
+                       "createdAt":  "Fri Jan 30 10:46:25 +0000 2026",
+                       "replies":  0,
+                       "likes":  1,
+                       "url":  "https://x.com/Strakyo/status/2017187637627367709"
+                   },
+                   {
+                       "id":  "2017161080150090232",
+                       "retweets":  0,
+                       "text":  "Some guy just made $400K in a month on Polymarket with a Claude-built trading bot.\n\nNo quant background. No hedge fund. Just vibes and an AI.\n\nWe\u0027re watching the barrier to algorithmic trading collapse in real time.",
+                       "createdAt":  "Fri Jan 30 09:00:53 +0000 2026",
+                       "replies":  4,
+                       "likes":  1,
+                       "url":  "https://x.com/Strakyo/status/2017161080150090232"
+                   },
+                   {
+                       "id":  "2017130889726079038",
+                       "retweets":  0,
+                       "text":  "The gap between \"I have an idea\" and \"I have an app\" just went from years έΗΤ hours.\n\nVibecode just launched design mode for AI app building.\n\nWhile everyone debates whether AI can code, the builders are already shipping.",
+                       "createdAt":  "Fri Jan 30 07:00:55 +0000 2026",
+                       "replies":  4,
+                       "likes":  0,
+                       "url":  "https://x.com/Strakyo/status/2017130889726079038"
+                   },
+                   {
+                       "id":  "2016919446003032553",
+                       "retweets":  0,
+                       "text":  "xAI just announced they\u0027re \"cooking hard on many projects.\"\n\nMeanwhile:\nέΑλ ChatGPT is iterating\nέΑλ Gemini is expanding\nέΑλ Claude is refining\n\nThe AI race in 2026 isn\u0027t about who launches first.\n\nIt\u0027s about who builds the moat before the others notice what they\u0027re doing.",
+                       "createdAt":  "Thu Jan 29 17:00:43 +0000 2026",
+                       "replies":  4,
+                       "likes":  1,
+                       "url":  "https://x.com/Strakyo/status/2016919446003032553"
+                   },
+                   {
+                       "id":  "2016889332359893069",
+                       "retweets":  0,
+                       "text":  "The gatekeepers told you coding takes 4 years to learn.\n\nNow people are shipping entire apps by describing them in plain English.\n\nVibe coding isn\u0027t replacing developersέΑΦit\u0027s creating a million new ones.\n\nThe barrier to building just dropped to zero.",
+                       "createdAt":  "Thu Jan 29 15:01:03 +0000 2026",
+                       "replies":  5,
+                       "likes":  2,
+                       "url":  "https://x.com/Strakyo/status/2016889332359893069"
+                   },
+                   {
+                       "id":  "2016878390565867615",
+                       "retweets":  0,
+                       "text":  "Just shipped something I\u0027ve been using daily for 2 weeks.\n\nAn AI tweet generator that actually sounds like you.\n\nΏθπ╡ Thread on what I built and why it\u0027s different:",
+                       "createdAt":  "Thu Jan 29 14:17:34 +0000 2026",
+                       "replies":  1,
+                       "likes":  1,
+                       "url":  "https://x.com/Strakyo/status/2016878390565867615"
+                   },
+                   {
+                       "id":  "2016879519722865121",
+                       "retweets":  0,
+                       "text":  "Free tier: 10 generations/day\nPro: Unlimited for $19.99/mo\n\nTry it: https://t.co/dghcFM36Cs",
+                       "createdAt":  "Thu Jan 29 14:22:03 +0000 2026",
+                       "replies":  1,
+                       "likes":  0,
+                       "url":  "https://x.com/Strakyo/status/2016879519722865121"
+                   },
+                   {
+                       "id":  "2016879694398771451",
+                       "retweets":  0,
+                       "text":  "If you try it, drop a reply with the tweet it generated.\n\nI\u0027ll RT the best ones ΏθγΑ",
+                       "createdAt":  "Thu Jan 29 14:22:45 +0000 2026",
+                       "replies":  0,
+                       "likes":  0,
+                       "url":  "https://x.com/Strakyo/status/2016879694398771451"
+                   }
+               ],
+    "lastUpdated":  "2026-01-31 10:17:07",
+    "stats":  {
+                  "totalRetweets":  0,
+                  "totalEngagements":  56,
+                  "totalLikes":  11,
+                  "totalReplies":  45,
+                  "totalTweets":  18
+              }
+}
