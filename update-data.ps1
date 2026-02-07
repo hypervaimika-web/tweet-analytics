@@ -51,4 +51,9 @@ $jsonPath = Join-Path $PSScriptRoot "data.json"
 $dashboardData | ConvertTo-Json -Depth 10 | Set-Content $jsonPath -Encoding UTF8
 
 Write-Host "Saved data to $jsonPath"
+
+# Generate Chart
+Write-Host "Generating engagement chart..."
+node "$PSScriptRoot/chart-gen.js"
+
 Write-Host "Stats: Tweets=$($tweets.Count) Likes=$totalLikes Replies=$totalReplies Retweets=$totalRetweets"
