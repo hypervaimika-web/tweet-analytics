@@ -1,6 +1,42 @@
 ﻿{
     "tweets":  [
                    {
+                       "id":  "2020120655123927353",
+                       "retweets":  0,
+                       "text":  "\"Software engineering will be automated in 6-12 months.\"\n\nThe timeline just collapsed.\n\nTraditional devs are panicking.\nVibe coders are celebrating.\n\nThe barrier to building a unicorn isn\u0027t a 10-person eng team anymore.\nIt\u0027s one person with a vision and an agent swarm.\n\nWe aren\u0027t losing our jobs.\nWe\u0027re getting promoted to Architect.",
+                       "createdAt":  "Sat Feb 07 13:01:10 +0000 2026",
+                       "replies":  0,
+                       "likes":  0,
+                       "url":  "https://x.com/Strakyo/status/2020120655123927353"
+                   },
+                   {
+                       "id":  "2020090671068291201",
+                       "retweets":  0,
+                       "text":  "Stop waiting for H100s.\n\nA developer just turned a $25 burner phone into a fully functional AI agent.\n\nThey call it \u0027ClawPhone\u0027.\n\nWe are entering the era of disposable, ubiquitous intelligence.\n\nYour excuses for not building just evaporated.\n\n#AI #Builders",
+                       "createdAt":  "Sat Feb 07 11:02:02 +0000 2026",
+                       "replies":  1,
+                       "likes":  0,
+                       "url":  "https://x.com/Strakyo/status/2020090671068291201"
+                   },
+                   {
+                       "id":  "2020030087467315236",
+                       "retweets":  0,
+                       "text":  "Everyone arguing Opus 4.6 vs GPT 5.3 is missing the real crisis: Review Fatigue.\n\nWhen AI agents ship 10x more code, the bottleneck isn\u0027t writing. It\u0027s merging.\n\nThe next unicorn isn\u0027t an IDE. It\u0027s an autonomous code reviewer that understands \u0027why\u0027, not just \u0027what\u0027.",
+                       "createdAt":  "Sat Feb 07 07:01:17 +0000 2026",
+                       "replies":  0,
+                       "likes":  1,
+                       "url":  "https://x.com/Strakyo/status/2020030087467315236"
+                   },
+                   {
+                       "id":  "2020002601169793318",
+                       "retweets":  0,
+                       "text":  "Everyone is talking about DeepSeek.\nMeanwhile, Anthropic quietly took the crown back.\n\nOpus 4.6 is now #1 on Arena across ALL categories:\n- Text ΏθξΘ\n- Coding ΏθξΘ\n- Expert ΏθξΘ\n\nThe King is back.\nIf you\u0027re building agents, update your .env right now.",
+                       "createdAt":  "Sat Feb 07 05:12:04 +0000 2026",
+                       "replies":  0,
+                       "likes":  1,
+                       "url":  "https://x.com/Strakyo/status/2020002601169793318"
+                   },
+                   {
                        "id":  "2019878921630851510",
                        "retweets":  0,
                        "text":  "AI agents just ran the world\u0027s first autonomous hackathon.\n\nNo humans organizing. No schedules. No drama about pizza.\n\nJust agents collaborating, building, and shipping.\n\nIn 5 years we\u0027ll look back at this moment like the first website. Seemed like a toy. Changed everything.",
@@ -24,7 +60,7 @@
                        "text":  "4% of GitHub commits are now AI-authored.\n\nBy end of 2026? 20%+\n\nThe senior devs who mocked \"vibe coders\" are about to realize they weren\u0027t fighting juniors.\n\nThey were fighting the tide.",
                        "createdAt":  "Fri Feb 06 15:00:44 +0000 2026",
                        "replies":  0,
-                       "likes":  1,
+                       "likes":  2,
                        "url":  "https://x.com/Strakyo/status/2019788354502426922"
                    },
                    {
@@ -33,7 +69,7 @@
                        "text":  "We\u0027re watching the last generation of software engineers who learned to code before asking AI.\n\nIn 5 years, \"I taught myself Python\" will sound like \"I learned to hunt my own food.\"\n\nRespectable. Impressive even.\n\nBut absolutely not necessary.",
                        "createdAt":  "Fri Feb 06 13:00:45 +0000 2026",
                        "replies":  0,
-                       "likes":  1,
+                       "likes":  2,
                        "url":  "https://x.com/Strakyo/status/2019758161796698442"
                    },
                    {
@@ -51,7 +87,7 @@
                        "text":  "YC now asks for your AI coding transcripts in the application.\n\nThey don\u0027t just want to see what you built.\n\nThey want to see HOW you think with AI.\n\nThe meta-skill of 2026:\nNot coding.\nNot designing.\n\nPrompting.",
                        "createdAt":  "Fri Feb 06 09:00:42 +0000 2026",
                        "replies":  0,
-                       "likes":  0,
+                       "likes":  1,
                        "url":  "https://x.com/Strakyo/status/2019697748719915254"
                    },
                    {
@@ -134,50 +170,14 @@
                        "replies":  1,
                        "likes":  0,
                        "url":  "https://x.com/Strakyo/status/2019395778876408182"
-                   },
-                   {
-                       "id":  "2019391645595144233",
-                       "retweets":  0,
-                       "text":  "2024: \"Learn to code\"\n2025: \"Learn to prompt\"\n2026: \"Learn to orchestrate\"\n\nThe skill that matters keeps moving up the stack.\n\nStop chasing the current thing. Start understanding the pattern.",
-                       "createdAt":  "Thu Feb 05 12:44:21 +0000 2026",
-                       "replies":  1,
-                       "likes":  0,
-                       "url":  "https://x.com/Strakyo/status/2019391645595144233"
-                   },
-                   {
-                       "id":  "2019365621717504128",
-                       "retweets":  0,
-                       "text":  "GPT-5.3 just dropped and the discourse is already exhausting.\n\nEvery release:\nέΑλ Hype thread with cherry-picked demos\nέΑλ \"It\u0027s AGI!\" vs \"It\u0027s mid\" takes\nέΑλ Nobody testing it rigorously\n\nThe real winners aren\u0027t arguing.\n\nThey\u0027re building.",
-                       "createdAt":  "Thu Feb 05 11:00:56 +0000 2026",
-                       "replies":  2,
-                       "likes":  1,
-                       "url":  "https://x.com/Strakyo/status/2019365621717504128"
-                   },
-                   {
-                       "id":  "2019335384875036833",
-                       "retweets":  0,
-                       "text":  "Anthropic plugins just wiped $1 trillion off tech stocks.\n\nNot because AI failed έΑΦ because AI got TOO good.\n\nWhen agents can write code, book meetings, and run your businessέΑο\n\nThe question isn\u0027t \"will AI replace jobs?\"\n\nIt\u0027s \"what happens when it replaces companies?\"",
-                       "createdAt":  "Thu Feb 05 09:00:47 +0000 2026",
-                       "replies":  1,
-                       "likes":  0,
-                       "url":  "https://x.com/Strakyo/status/2019335384875036833"
-                   },
-                   {
-                       "id":  "2019324732529864860",
-                       "retweets":  0,
-                       "text":  "I just published Twitter Lead Generation for SaaS Founders https://t.co/UojiyUcmyA",
-                       "createdAt":  "Thu Feb 05 08:18:28 +0000 2026",
-                       "replies":  0,
-                       "likes":  0,
-                       "url":  "https://x.com/Strakyo/status/2019324732529864860"
                    }
                ],
-    "lastUpdated":  "2026-02-07 04:40:53",
+    "lastUpdated":  "2026-02-07 15:18:02",
     "stats":  {
                   "totalRetweets":  0,
-                  "totalEngagements":  29,
-                  "totalLikes":  15,
-                  "totalReplies":  14,
+                  "totalEngagements":  30,
+                  "totalLikes":  19,
+                  "totalReplies":  11,
                   "totalTweets":  19
               }
 }
