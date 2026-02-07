@@ -1,6 +1,15 @@
 ﻿{
     "tweets":  [
                    {
+                       "id":  "2020181131384033488",
+                       "retweets":  0,
+                       "text":  "GPT-5.3 just dropped. Claude Opus 4.6 is fighting back.\n\nMeanwhile, software stocks shed $1 Trillion in a day.\n\nThe market knows what\u0027s coming before we do:\nEntry-level work is dead. High-leverage operators are the new gold standard.\n\nStop watching the model wars. Start building the leverage.",
+                       "createdAt":  "Sat Feb 07 17:01:29 +0000 2026",
+                       "replies":  0,
+                       "likes":  1,
+                       "url":  "https://x.com/Strakyo/status/2020181131384033488"
+                   },
+                   {
                        "id":  "2020150772910919919",
                        "retweets":  0,
                        "text":  "Saturday flow state. έγκΎ╕Π\n\nThe emails stop. The meetings vanish. The noise dies down.\n\nJust you, the AI, and the codebase.\n\nThis is when the real building happens.\n\nWhat are you shipping this weekend? ΏθΣΘ",
@@ -161,22 +170,13 @@
                        "replies":  1,
                        "likes":  1,
                        "url":  "https://x.com/Strakyo/status/2019456209862934746"
-                   },
-                   {
-                       "id":  "2019425964288061699",
-                       "retweets":  0,
-                       "text":  "OpenAI just launched \"Frontier\" for enterprise AI agents.\n\nThe message is clear: The future isn\u0027t chatbots. It\u0027s agents that execute.\n\nIn 12 months, \"AI assistant\" will sound as dated as \"webmaster.\"\n\nCompanies that get this early will operate with 10x fewer employees. The rest will wonder what happened.",
-                       "createdAt":  "Thu Feb 05 15:00:43 +0000 2026",
-                       "replies":  0,
-                       "likes":  0,
-                       "url":  "https://x.com/Strakyo/status/2019425964288061699"
                    }
                ],
-    "lastUpdated":  "2026-02-07 18:56:22",
+    "lastUpdated":  "2026-02-07 19:23:41",
     "stats":  {
                   "totalRetweets":  1,
-                  "totalEngagements":  32,
-                  "totalLikes":  21,
+                  "totalEngagements":  33,
+                  "totalLikes":  22,
                   "totalReplies":  10,
                   "totalTweets":  19
               }
