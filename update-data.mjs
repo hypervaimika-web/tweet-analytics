@@ -1,119 +1,161 @@
+// update-data.mjs - Xquik export to Tweet Analytics dashboard data
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
-// update-data.mjs - Twitter Scraper & Dashboard Updater (Node.js)
-import fs from 'fs';
-import path from 'path';
-import https from 'https';
+const TEXT_FIELDS = ['text', 'full_text', 'content', 'body', 'tweetText'];
+const DATE_FIELDS = ['createdAt', 'created_at', 'created', 'date', 'timestamp'];
 
-// --- Configuration ---
-const AUTH_TOKEN = process.env.TWITTER_AUTH_TOKEN;
-const CT0 = process.env.TWITTER_CT0;
-const USERNAME = 'Strakyo';
-const COUNT = 20;
+function parseArgs(argv) {
+  const options = {
+    input: process.env.XQUIK_EXPORT_PATH || '',
+    limit: 20,
+    output: path.join(process.cwd(), 'data.json'),
+    username: process.env.XQUIK_EXPORT_USERNAME || 'Strakyo',
+  };
 
-if (!AUTH_TOKEN || !CT0) {
-  console.error("Missing Twitter credentials (TWITTER_AUTH_TOKEN, TWITTER_CT0)");
-  process.exit(1);
-}
-
-// --- Helper: Fetch Tweets (Mocking Bird/Internal API) ---
-// Note: Reverse engineering the GraphQL endpoint is brittle.
-// Ideally, we'd use a library, but let's try a direct fetch if we can guess the endpoint.
-// Actually, since we want stability, let's use a known public scraper wrapper or fallback to basic fetching.
-// But wait! We have the COOKIES. We can hit the internal API.
-
-// For now, let's create a placeholder that simulates the fetch or uses a simple public endpoint if available.
-// Twitter has locked down public endpoints.
-// We must use the authenticated GraphQL endpoint.
-
-async function fetchTweets() {
-  console.log(`Fetching tweets for @${USERNAME}...`);
-  
-  // This is a placeholder. Real implementation requires the complex GraphQL query ID + Features.
-  // Since I cannot easily get the current QueryID without a browser interaction,
-  // I will write a script that assumes we can use a simpler endpoint or library.
-  
-  // Plan B: Use 'agent-twitter-client' if I can install it.
-  // Since I can't install it easily in this environment without npm install,
-  // I'll simulate the data update for now to prove the pipeline works.
-  // Later we can install the real scraper.
-  
-  // Wait! I can use 'fetch' to get the HTML and parse it? No, React hydration.
-  
-  console.log("⚠️  Twitter API direct fetch requires QueryID which changes often.");
-  console.log("⚠️  For this test, I will generate DUMMY DATA to verify the pipeline.");
-  
-  const dummyTweets = [
-    {
-      id: "1234567890",
-      text: "Just deployed my new AI cluster! 🚀 #BuildInPublic",
-      createdAt: new Date().toISOString(),
-      likeCount: 42,
-      replyCount: 5,
-      retweetCount: 12
-    },
-    {
-      id: "0987654321",
-      text: "VMMika is online and working autonomously. The Hive Mind grows. 🤖✨",
-      createdAt: new Date(Date.now() - 3600000).toISOString(),
-      likeCount: 128,
-      replyCount: 24,
-      retweetCount: 15
+  for (let index = 0; index < argv.length; index += 1) {
+    const arg = argv[index];
+    if (arg === '--limit') {
+      options.limit = Number.parseInt(argv[index + 1] || '', 10);
+      index += 1;
+    } else if (arg === '--output') {
+      options.output = argv[index + 1] || options.output;
+      index += 1;
+    } else if (arg === '--username') {
+      options.username = argv[index + 1] || options.username;
+      index += 1;
+    } else if (!arg.startsWith('--') && !options.input) {
+      options.input = arg;
     }
-  ];
-  
-  return dummyTweets;
-}
-
-// --- Main Execution ---
-async function run() {
-  try {
-    const tweets = await fetchTweets();
-    console.log(`Fetched ${tweets.length} tweets.`);
-
-    // Calculate Stats
-    let totalLikes = 0, totalReplies = 0, totalRetweets = 0;
-    const formattedTweets = tweets.map(t => {
-      totalLikes += t.likeCount;
-      totalReplies += t.replyCount;
-      totalRetweets += t.retweetCount;
-      return {
-        id: t.id,
-        text: t.text,
-        createdAt: t.createdAt,
-        likes: t.likeCount,
-        replies: t.replyCount,
-        retweets: t.retweetCount,
-        url: `https://x.com/${USERNAME}/status/${t.id}`
-      };
-    });
-
-    const totalEngagements = totalLikes + totalReplies + totalRetweets;
-
-    // Dashboard Data
-    const dashboardData = {
-      lastUpdated: new Date().toISOString().replace('T', ' ').substring(0, 19),
-      stats: {
-        totalTweets: tweets.length,
-        totalLikes,
-        totalReplies,
-        totalRetweets,
-        totalEngagements
-      },
-      tweets: formattedTweets
-    };
-
-    // Save to file
-    const outputPath = path.join(process.cwd(), 'data.json');
-    fs.writeFileSync(outputPath, JSON.stringify(dashboardData, null, 2));
-    console.log(`Saved data to ${outputPath}`);
-
-    // Chart Generation (Placeholder)
-    console.log("Generating chart... (Skipped in Node version for now)");
-
-  } catch (error) {
-    console.error("Error updating dashboard:", error);
-    process.exit(1);
   }
+
+  return options;
 }
 
-run();
+async function readExport(inputPath) {
+  const raw = (await fs.readFile(inputPath, 'utf8')).replace(/^\uFEFF/, '').trim();
+  if (!raw) {
+    return [];
+  }
+
+  if (inputPath.toLowerCase().endsWith('.jsonl')) {
+    return raw.split(/\r?\n/).filter(Boolean).map((line) => JSON.parse(line));
+  }
+
+  const payload = JSON.parse(raw);
+  if (Array.isArray(payload)) {
+    return payload;
+  }
+  for (const key of ['tweets', 'data', 'results', 'items']) {
+    if (Array.isArray(payload[key])) {
+      return payload[key];
+    }
+  }
+  throw new Error('Unsupported Xquik export shape. Expected a tweet array.');
+}
+
+function firstString(row, fields) {
+  for (const field of fields) {
+    const value = row[field];
+    if (typeof value === 'string' && value.trim()) {
+      return value.trim();
+    }
+  }
+  return '';
+}
+
+function numberFrom(value) {
+  const parsed = Number(value || 0);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function dateFrom(row) {
+  const rawDate = firstString(row, DATE_FIELDS);
+  const parsed = rawDate ? new Date(rawDate) : new Date();
+  return Number.isNaN(parsed.getTime()) ? new Date().toISOString() : parsed.toISOString();
+}
+
+function idFrom(row, index) {
+  return String(row.id || row.tweet_id || row.tweetId || `xquik-${index + 1}`);
+}
+
+function usernameFrom(row, fallbackUsername) {
+  if (row.author && typeof row.author.username === 'string') {
+    return row.author.username.replace(/^@/, '');
+  }
+  if (typeof row.username === 'string') {
+    return row.username.replace(/^@/, '');
+  }
+  return fallbackUsername.replace(/^@/, '');
+}
+
+function normalizeTweet(row, index, fallbackUsername) {
+  const id = idFrom(row, index);
+  const username = usernameFrom(row, fallbackUsername);
+  const text = firstString(row, TEXT_FIELDS);
+  if (!text) {
+    return null;
+  }
+
+  return {
+    id,
+    text,
+    createdAt: dateFrom(row),
+    likes: numberFrom(row.like_count ?? row.likes ?? row.likeCount),
+    replies: numberFrom(row.reply_count ?? row.replies ?? row.replyCount),
+    retweets: numberFrom(row.retweet_count ?? row.retweets ?? row.retweetCount),
+    url: row.url || `https://x.com/${username}/status/${id}`,
+  };
+}
+
+function buildDashboardData(tweets) {
+  const stats = tweets.reduce(
+    (total, tweet) => ({
+      totalTweets: total.totalTweets + 1,
+      totalLikes: total.totalLikes + tweet.likes,
+      totalReplies: total.totalReplies + tweet.replies,
+      totalRetweets: total.totalRetweets + tweet.retweets,
+      totalEngagements:
+        total.totalEngagements + tweet.likes + tweet.replies + tweet.retweets,
+    }),
+    {
+      totalTweets: 0,
+      totalLikes: 0,
+      totalReplies: 0,
+      totalRetweets: 0,
+      totalEngagements: 0,
+    },
+  );
+
+  return {
+    source: 'xquik_export',
+    lastUpdated: new Date().toISOString().replace('T', ' ').substring(0, 19),
+    stats,
+    tweets,
+  };
+}
+
+async function main() {
+  const options = parseArgs(process.argv.slice(2));
+  if (!options.input) {
+    throw new Error('Pass a Xquik export path or set XQUIK_EXPORT_PATH.');
+  }
+  if (!Number.isInteger(options.limit) || options.limit < 1 || options.limit > 100) {
+    throw new Error('--limit must be a number from 1 to 100.');
+  }
+
+  const rows = await readExport(options.input);
+  const tweets = rows
+    .map((row, index) => normalizeTweet(row, index, options.username))
+    .filter(Boolean)
+    .slice(0, options.limit);
+
+  const dashboardData = buildDashboardData(tweets);
+  await fs.writeFile(options.output, `${JSON.stringify(dashboardData, null, 2)}\n`);
+  console.log(`Saved ${tweets.length} tweets to ${options.output}`);
+}
+
+main().catch((error) => {
+  console.error(error.message);
+  process.exit(1);
+});

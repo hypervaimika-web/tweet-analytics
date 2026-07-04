@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="690" height="434" viewBox="0 0 690 434" role="img" aria-labelledby="title desc">
+  <title id="title">Tweet Engagement Over Time</title>
+  <desc id="desc">Engagement chart generated from data.json</desc>
+  <rect width="690" height="434" rx="16" fill="#111827"/>
+  <text x="36" y="48" fill="#f9fafb" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">Tweet Engagement Over Time</text>
+  <text x="36" y="76" fill="#9ca3af" font-family="Inter, Arial, sans-serif" font-size="14">Latest point: Feb 8</text>
+  <line x1="42" y1="360" x2="650" y2="360" stroke="#374151"/>
+  <line x1="42" y1="42" x2="42" y2="360" stroke="#374151"/>
+  <text x="50" y="108" fill="#a78bfa" font-family="Inter, Arial, sans-serif" font-size="13">Max 5</text>
+  <polyline points="42.0,230.8 72.9,230.8 103.8,183.6 134.7,183.6 165.6,42.0 196.4,42.0 227.3,230.8 258.2,230.8 289.1,230.8 320.0,183.6 350.9,230.8 381.8,230.8 412.7,278.0 443.6,278.0 474.4,278.0 505.3,136.4 536.2,278.0 567.1,230.8 598.0,136.4" fill="none" stroke="#a78bfa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="42.0" cy="230.8" r="4" fill="#22c55e"><title>1 engagements</title></circle>
+  <circle cx="72.9" cy="230.8" r="4" fill="#22c55e"><title>1 engagements</title></circle>
+  <circle cx="103.8" cy="183.6" r="4" fill="#22c55e"><title>2 engagements</title></circle>
+  <circle cx="134.7" cy="183.6" r="4" fill="#22c55e"><title>2 engagements</title></circle>
+  <circle cx="165.6" cy="42.0" r="4" fill="#22c55e"><title>5 engagements</title></circle>
+  <circle cx="196.4" cy="42.0" r="4" fill="#22c55e"><title>5 engagements</title></circle>
+  <circle cx="227.3" cy="230.8" r="4" fill="#22c55e"><title>1 engagements</title></circle>
+  <circle cx="258.2" cy="230.8" r="4" fill="#22c55e"><title>1 engagements</title></circle>
+  <circle cx="289.1" cy="230.8" r="4" fill="#22c55e"><title>1 engagements</title></circle>
+  <circle cx="320.0" cy="183.6" r="4" fill="#22c55e"><title>2 engagements</title></circle>
+  <circle cx="350.9" cy="230.8" r="4" fill="#22c55e"><title>1 engagements</title></circle>
+  <circle cx="381.8" cy="230.8" r="4" fill="#22c55e"><title>1 engagements</title></circle>
+  <circle cx="412.7" cy="278.0" r="4" fill="#22c55e"><title>0 engagements</title></circle>
+  <circle cx="443.6" cy="278.0" r="4" fill="#22c55e"><title>0 engagements</title></circle>
+  <circle cx="474.4" cy="278.0" r="4" fill="#22c55e"><title>0 engagements</title></circle>
+  <circle cx="505.3" cy="136.4" r="4" fill="#22c55e"><title>3 engagements</title></circle>
+  <circle cx="536.2" cy="278.0" r="4" fill="#22c55e"><title>0 engagements</title></circle>
+  <circle cx="567.1" cy="230.8" r="4" fill="#22c55e"><title>1 engagements</title></circle>
+  <circle cx="598.0" cy="136.4" r="4" fill="#22c55e"><title>3 engagements</title></circle>
+</svg>
